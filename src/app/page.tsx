@@ -1423,7 +1423,8 @@ export default function LandingPage() {
           <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-zinc-100 pt-8 sm:flex-row">
             <div className="text-[13px] text-zinc-400">
               <p>&copy; {new Date().getFullYear()} Linkora. Todos os direitos reservados.</p>
-              <p className="mt-1 text-[11px] text-zinc-300">R4 Empreendimentos Digitais e Comerciais LTDA — CNPJ: 27.962.498/0001-20</p>
+              <p className="mt-1 text-[11px] text-zinc-300">Azecom Internet LTDA — CNPJ: 15.209.484/0001-50</p>
+              <p className="mt-0.5 text-[11px] text-zinc-300">Suporte: Support@liinkoraa.com</p>
             </div>
             <p className="text-[13px] text-zinc-400">Feito com <span className="text-red-500">♥</span> no Brasil</p>
           </div>
