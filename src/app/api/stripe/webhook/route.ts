@@ -1,14 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
-import { createClient } from "@supabase/supabase-js";
+import { createAdminClient } from "@/lib/supabase/admin";
 import type Stripe from "stripe";
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
-
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+  const supabaseAdmin = createAdminClient();
   const productId = session.metadata?.product_id;
   if (!productId) {
     console.warn("[Webhook] No product_id in metadata");
@@ -44,6 +40,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
 }
 
 async function handlePaymentFailed(session: Stripe.Checkout.Session) {
+  const supabaseAdmin = createAdminClient();
   const productId = session.metadata?.product_id;
   if (!productId) return;
 

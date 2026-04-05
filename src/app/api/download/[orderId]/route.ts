@@ -1,16 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { createAdminClient } from "@/lib/supabase/admin";
 
 interface RouteContext {
   params: Promise<{ orderId: string }>;
 }
 
 export async function GET(request: NextRequest, context: RouteContext) {
+  const supabaseAdmin = createAdminClient();
   const { orderId } = await context.params;
 
   if (!orderId) {
