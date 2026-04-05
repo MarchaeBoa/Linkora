@@ -28,10 +28,30 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased notranslate`}
       suppressHydrationWarning
+      translate="no"
     >
+      <head>
+        <meta name="google" content="notranslate" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                  pageLanguage: 'pt',
+                  autoDisplay: true,
+                  includedLanguages: 'en,es,fr,de,it,ja,ko,zh-CN,ar,hi,ru,nl,sv,pl,tr',
+                  layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+                }, 'google_translate_element');
+              }
+            `,
+          }}
+        />
+        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <div id="google_translate_element" className="fixed top-16 right-4 z-[9999]" />
         {children}
         <Toaster />
       </body>

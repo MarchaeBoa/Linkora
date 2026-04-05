@@ -137,3 +137,40 @@
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
+
+/* Google Translate widget styling */
+#google_translate_element {
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+#google_translate_element:hover {
+  opacity: 1;
+}
+.goog-te-gadget {
+  font-family: inherit !important;
+  font-size: 0 !important;
+}
+.goog-te-gadget .goog-te-combo {
+  font-size: 13px !important;
+  font-family: inherit !important;
+  padding: 6px 12px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  background: white !important;
+  color: #333 !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+  outline: none !important;
+}
+.goog-te-banner-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+.skiptranslate {
+  display: none !important;
+}
+#google_translate_element .skiptranslate {
+  display: block !important;
+}
