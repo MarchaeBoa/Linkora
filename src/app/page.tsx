@@ -1420,13 +1420,20 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
-          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-zinc-100 pt-8 sm:flex-row">
-            <div className="text-[13px] text-zinc-400">
-              <p>&copy; {new Date().getFullYear()} Linkora. Todos os direitos reservados.</p>
-              <p className="mt-1 text-[11px] text-zinc-300">Azecom Internet LTDA — CNPJ: 15.209.484/0001-50</p>
-              <p className="mt-0.5 text-[11px] text-zinc-300">Suporte: Support@liinkoraa.com</p>
+          <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-zinc-200 pt-8 sm:flex-row">
+            <div>
+              <p className="text-sm font-medium text-zinc-700">&copy; {new Date().getFullYear()} Linkora. Todos os direitos reservados.</p>
+              <p className="mt-1.5 text-[13px] text-zinc-600">Azecom Internet LTDA — CNPJ: 15.209.484/0001-50</p>
+              <p className="mt-0.5 text-[13px] text-zinc-600">Suporte: <a href="mailto:Support@liinkoraa.com" className="text-violet-600 hover:underline">Support@liinkoraa.com</a></p>
             </div>
-            <p className="text-[13px] text-zinc-400">Feito com <span className="text-red-500">♥</span> no Brasil</p>
+            <div className="flex flex-col items-end gap-2">
+              <div className="flex items-center gap-4 text-[13px] text-zinc-600">
+                <Link href="/termos" className="hover:text-violet-600 hover:underline">Termos de Uso</Link>
+                <Link href="/privacidade" className="hover:text-violet-600 hover:underline">Privacidade</Link>
+                <Link href="/cookies" className="hover:text-violet-600 hover:underline">Cookies</Link>
+              </div>
+              <p className="text-[13px] text-zinc-500">Feito com <span className="text-red-500">♥</span> no Brasil</p>
+            </div>
           </div>
         </div>
       </footer>
