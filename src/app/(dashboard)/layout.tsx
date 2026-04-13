@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import type { Profile } from "@/types";
+import { hasActiveSubscription, type Profile } from "@/types";
 import { DashboardShell } from "./dashboard-shell";
 
 export default async function DashboardLayout({
@@ -22,6 +22,10 @@ export default async function DashboardLayout({
     .select("*")
     .eq("id", user.id)
     .single();
+
+  if (!hasActiveSubscription(profile as Profile | null)) {
+    redirect("/pricing");
+  }
 
   return (
     <DashboardShell profile={profile as Profile} email={user.email ?? ""}>

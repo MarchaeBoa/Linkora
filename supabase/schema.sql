@@ -9,9 +9,19 @@ create table public.profiles (
   avatar_url text,
   theme_color text default '#8B5CF6',
   social_links jsonb default '{}',
+  subscription_status text not null default 'inactive'
+    check (subscription_status in ('inactive', 'active', 'trialing', 'past_due', 'canceled', 'unpaid')),
+  subscription_plan text
+    check (subscription_plan in ('pro', 'business')),
+  stripe_customer_id text unique,
+  stripe_subscription_id text unique,
+  subscription_current_period_end timestamptz,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
+
+create index if not exists profiles_subscription_status_idx
+  on public.profiles (subscription_status);
 
 -- Products table
 create table public.products (
@@ -128,11 +138,13 @@ create policy "Service role can insert orders"
   on public.orders for insert with check (true);
 
 -- Trigger to create profile on signup
+-- New users start with subscription_status = 'inactive'; they must subscribe
+-- before they can access the dashboard.
 create or replace function public.handle_new_user()
 returns trigger as $$
 begin
-  insert into public.profiles (id, display_name)
-  values (new.id, new.raw_user_meta_data->>'display_name');
+  insert into public.profiles (id, display_name, subscription_status)
+  values (new.id, new.raw_user_meta_data->>'display_name', 'inactive');
   return new;
 end;
 $$ language plpgsql security definer;
