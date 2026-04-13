@@ -11,6 +11,11 @@ interface SubscribeButtonProps {
   label: string;
   className?: string;
   requireAuth?: boolean;
+  /**
+   * When provided, the button renders as an anchor that opens this URL in a
+   * new tab instead of calling the internal /api/stripe/subscribe endpoint.
+   */
+  externalUrl?: string;
 }
 
 export function SubscribeButton({
@@ -18,10 +23,25 @@ export function SubscribeButton({
   label,
   className,
   requireAuth,
+  externalUrl,
 }: SubscribeButtonProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [, startTransition] = useTransition();
+
+  if (externalUrl) {
+    return (
+      <a
+        href={externalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {label}
+        <ArrowRight className="h-4 w-4" />
+      </a>
+    );
+  }
 
   async function handleClick() {
     if (requireAuth) {

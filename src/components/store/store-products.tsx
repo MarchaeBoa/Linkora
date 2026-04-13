@@ -1,8 +1,6 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 import type { Product } from "@/types";
-import { ShoppingCart, Loader2, Package } from "lucide-react";
+import { ShoppingCart, Package } from "lucide-react";
 
 interface StoreProductsProps {
   products: Product[];
@@ -17,25 +15,6 @@ function formatPrice(cents: number) {
 }
 
 export function StoreProducts({ products, themeColor }: StoreProductsProps) {
-  const [loadingId, setLoadingId] = useState<string | null>(null);
-
-  async function handleBuy(productId: string) {
-    setLoadingId(productId);
-    try {
-      const res = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } finally {
-      setLoadingId(null);
-    }
-  }
-
   return (
     <div>
       <div className="mb-5 flex items-center gap-2">
@@ -85,19 +64,15 @@ export function StoreProducts({ products, themeColor }: StoreProductsProps) {
                   </span>
                 </div>
 
-                <button
-                  onClick={() => handleBuy(product.id)}
-                  disabled={loadingId === product.id}
-                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-[13px] font-semibold text-white transition-all hover:opacity-90 active:scale-[0.97] disabled:opacity-50"
+                <Link
+                  href={`/checkout/${product.id}`}
+                  prefetch={false}
+                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-[13px] font-semibold text-white transition-all hover:opacity-90 active:scale-[0.97]"
                   style={{ backgroundColor: themeColor }}
                 >
-                  {loadingId === product.id ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  ) : (
-                    <ShoppingCart className="h-4 w-4" />
-                  )}
+                  <ShoppingCart className="h-4 w-4" />
                   Comprar
-                </button>
+                </Link>
               </div>
             </div>
           </div>
