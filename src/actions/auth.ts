@@ -66,7 +66,7 @@ export async function register(formData: FormData) {
     return { error: "Este email já está cadastrado. Tente fazer login." };
   }
 
-  redirect("/dashboard");
+  redirect("/pricing");
 }
 
 export async function logout() {

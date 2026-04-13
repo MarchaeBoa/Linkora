@@ -100,7 +100,7 @@ const howItWorks = [
   {
     step: "01",
     title: "Crie sua conta",
-    description: "Cadastro gratuito em 30 segundos. Sem cartão de crédito.",
+    description: "Cadastro em 30 segundos e escolha um plano para começar.",
   },
   {
     step: "02",
@@ -116,21 +116,12 @@ const howItWorks = [
 
 const plans = [
   {
-    name: "Starter",
-    price: "0",
-    period: "para sempre",
-    description: "Para quem está começando",
-    features: ["1 página pública", "Até 5 links", "3 produtos", "Captura de leads", "Checkout Stripe"],
-    cta: "Começar grátis",
-    highlighted: false,
-  },
-  {
     name: "Pro",
     price: "29",
     period: "/mês",
     description: "Para criadores profissionais",
     features: ["Links ilimitados", "Produtos ilimitados", "Analytics avançado", "Domínio próprio", "Sem marca Linkora", "Suporte prioritário", "Webhooks"],
-    cta: "Começar teste grátis",
+    cta: "Assinar Pro",
     highlighted: true,
     badge: "Mais popular",
   },
@@ -140,7 +131,7 @@ const plans = [
     period: "/mês",
     description: "Para equipes e empresas",
     features: ["Tudo do Pro", "Múltiplas páginas", "Membros da equipe", "API completa", "White-label", "SLA 99.9%", "Gerente dedicado"],
-    cta: "Falar com vendas",
+    cta: "Assinar Business",
     highlighted: false,
   },
 ];
@@ -151,7 +142,7 @@ const faqs = [
   { question: "Posso usar meu domínio?", answer: "Sim! No plano Pro você conecta seu domínio personalizado." },
   { question: "Que produtos posso vender?", answer: "Ebooks, cursos, templates, presets, planilhas, PDFs e qualquer arquivo digital." },
   { question: "Tem taxa sobre vendas?", answer: "Zero taxa de plataforma. Só a taxa padrão do Stripe (2.9% + R$0.30)." },
-  { question: "Posso cancelar a qualquer momento?", answer: "Sim, sem multa. Faça downgrade para o plano gratuito quando quiser." },
+  { question: "Posso cancelar a qualquer momento?", answer: "Sim, sem multa. Cancele sua assinatura quando quiser direto no painel." },
 ];
 
 const testimonials = [
@@ -189,7 +180,7 @@ export default function LandingPage() {
               Entrar
             </Link>
             <Link href="/register" className="rounded-xl bg-zinc-900 px-5 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-zinc-900/20 transition-all hover:bg-zinc-800 hover:shadow-xl">
-              Começar grátis
+              Começar agora
             </Link>
           </div>
 
@@ -207,7 +198,7 @@ export default function LandingPage() {
             ))}
             <div className="mt-3 flex flex-col gap-2 border-t border-zinc-100 pt-4">
               <Link href="/login" className="py-2 text-sm text-zinc-600">Entrar</Link>
-              <Link href="/register" className="rounded-xl bg-zinc-900 px-4 py-2.5 text-center text-sm font-semibold text-white">Começar grátis</Link>
+              <Link href="/register" className="rounded-xl bg-zinc-900 px-4 py-2.5 text-center text-sm font-semibold text-white">Começar agora</Link>
             </div>
           </div>
         )}
@@ -254,7 +245,7 @@ export default function LandingPage() {
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
                 <Link href="/register" className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 text-[15px] font-bold text-violet-700 shadow-2xl shadow-black/20 transition-all hover:shadow-3xl hover:scale-[1.02] active:scale-[0.98]">
-                  Começar gratuitamente
+                  Começar agora
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <a href="#como-funciona" className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white/25 px-8 py-4 text-[15px] font-semibold text-white transition-all hover:bg-white/10">
@@ -477,7 +468,7 @@ export default function LandingPage() {
                 href="/register"
                 className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-zinc-900 px-8 py-4 text-[15px] font-bold text-white shadow-lg transition-all hover:bg-zinc-800"
               >
-                Começar grátis agora
+                Começar agora
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -519,7 +510,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ═══════ FREE TRIAL BANNER ═══════ */}
+      {/* ═══════ UPGRADE BANNER ═══════ */}
       <section className="relative overflow-hidden bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 py-12">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url("/images/bg-hero-bokeh.jpg")`, backgroundSize: "cover" }} />
         <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">
@@ -528,15 +519,15 @@ export default function LandingPage() {
               <Sparkles className="h-7 w-7 text-white" />
             </div>
             <div>
-              <p className="text-xl font-extrabold text-white">Teste grátis por 14 dias</p>
-              <p className="text-sm text-white/70">Sem cartão de crédito. Cancele quando quiser.</p>
+              <p className="text-xl font-extrabold text-white">Assine e comece a vender hoje</p>
+              <p className="text-sm text-white/70">Cancele quando quiser. Sem permanência.</p>
             </div>
           </div>
           <Link
             href="/register"
             className="group flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-[15px] font-bold text-violet-700 shadow-2xl transition-all hover:scale-[1.02]"
           >
-            Começar meu trial grátis
+            Assinar agora
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -1113,7 +1104,7 @@ export default function LandingPage() {
               { feature: "0% taxa de plataforma", linktree: true, stan: false, linkora: true },
               { feature: "Analytics em tempo real", linktree: false, stan: true, linkora: true },
               { feature: "Personalização total de cores", linktree: false, stan: false, linkora: true },
-              { feature: "Plano gratuito generoso", linktree: true, stan: false, linkora: true },
+              { feature: "Planos com preço fixo e transparente", linktree: true, stan: false, linkora: true },
               { feature: "Entrega automática de arquivos", linktree: false, stan: true, linkora: true },
               { feature: "Upload de produtos ilimitado", linktree: false, stan: false, linkora: true },
             ].map((row, i) => (
@@ -1166,7 +1157,7 @@ export default function LandingPage() {
             <div className="grid grid-cols-4 border-t-2 border-violet-100 bg-gradient-to-r from-violet-50 to-indigo-50">
               <div className="col-span-3 flex items-center px-8 py-5">
                 <p className="text-[15px] font-bold text-zinc-900">
-                  A escolha é óbvia. <span className="text-violet-600">Comece grátis agora.</span>
+                  A escolha é óbvia. <span className="text-violet-600">Assine e comece agora.</span>
                 </p>
               </div>
               <div className="flex items-center justify-center px-4 py-5">
@@ -1207,16 +1198,16 @@ export default function LandingPage() {
               Preços transparentes
             </div>
             <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Comece grátis,
+              Planos que crescem
               <br />
-              <span className="text-zinc-400">escale quando quiser</span>
+              <span className="text-zinc-400">junto com você</span>
             </h2>
             <p className="mt-4 text-lg text-zinc-500">
               Sem surpresas, sem taxas escondidas. Escolha o plano ideal para você.
             </p>
           </div>
 
-          <div className="mt-16 grid items-center gap-6 lg:grid-cols-3">
+          <div className="mt-16 grid items-center gap-6 lg:grid-cols-2 lg:max-w-4xl lg:mx-auto">
             {plans.map((plan) => (
               <div
                 key={plan.name}
@@ -1261,7 +1252,7 @@ export default function LandingPage() {
                         {plan.cta}
                         <ArrowRight className="h-4 w-4" />
                       </Link>
-                      <p className="mt-3 text-center text-[11px] text-zinc-400">14 dias grátis · Cancele quando quiser</p>
+                      <p className="mt-3 text-center text-[11px] text-zinc-400">Cancele quando quiser · Sem permanência</p>
 
                       <div className="my-6 h-px bg-zinc-100" />
 
@@ -1375,16 +1366,16 @@ export default function LandingPage() {
               sua audiência em receita?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-white/60">
-              Junte-se a milhares de criadores que já monetizam com a Linkora. Comece grátis, sem cartão de crédito.
+              Junte-se a milhares de criadores que já monetizam com a Linkora. Escolha um plano e comece hoje.
             </p>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link href="/register" className="group inline-flex items-center gap-2 rounded-2xl bg-white px-10 py-4 text-[16px] font-bold text-violet-700 shadow-2xl transition-all hover:scale-[1.02]">
-                Criar minha conta grátis
+                Criar minha conta
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
             <p className="mt-6 text-[13px] text-white/40">
-              Setup em 2 minutos · Sem cartão · Sem compromisso
+              Setup em 2 minutos · Cancele quando quiser
             </p>
           </div>
         </div>

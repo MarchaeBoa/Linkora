@@ -1,3 +1,13 @@
+export type SubscriptionStatus =
+  | "inactive"
+  | "active"
+  | "trialing"
+  | "past_due"
+  | "canceled"
+  | "unpaid";
+
+export type SubscriptionPlan = "pro" | "business";
+
 export interface Profile {
   id: string;
   username: string;
@@ -6,8 +16,25 @@ export interface Profile {
   avatar_url: string | null;
   theme_color: string;
   social_links: Record<string, string>;
+  subscription_status: SubscriptionStatus;
+  subscription_plan: SubscriptionPlan | null;
+  stripe_customer_id: string | null;
+  stripe_subscription_id: string | null;
+  subscription_current_period_end: string | null;
   created_at: string;
   updated_at: string;
+}
+
+export const ACTIVE_SUBSCRIPTION_STATUSES: SubscriptionStatus[] = [
+  "active",
+  "trialing",
+];
+
+export function hasActiveSubscription(
+  profile: Pick<Profile, "subscription_status"> | null | undefined,
+): boolean {
+  if (!profile) return false;
+  return ACTIVE_SUBSCRIPTION_STATUSES.includes(profile.subscription_status);
 }
 
 export type ProductType = "ebook" | "pdf" | "curso" | "arquivo" | "link_externo";
