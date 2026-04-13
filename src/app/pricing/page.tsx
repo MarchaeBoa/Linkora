@@ -139,7 +139,9 @@ export default async function PricingPage({ searchParams }: PricingPageProps) {
                       externalUrl={
                         plan.id === "pro"
                           ? "https://link.hubflashglobal.com.br/LinkoraPRO"
-                          : undefined
+                          : plan.id === "business"
+                            ? "https://link.hubflashglobal.com.br/LinkoraBUSINESS"
+                            : undefined
                       }
                       className="mt-6 flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-4 text-[15px] font-bold text-white shadow-lg shadow-violet-500/25 transition-all hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:pointer-events-none"
                     />
@@ -189,7 +191,9 @@ export default async function PricingPage({ searchParams }: PricingPageProps) {
                       externalUrl={
                         plan.id === "pro"
                           ? "https://link.hubflashglobal.com.br/LinkoraPRO"
-                          : undefined
+                          : plan.id === "business"
+                            ? "https://link.hubflashglobal.com.br/LinkoraBUSINESS"
+                            : undefined
                       }
                       className="mt-8 flex items-center justify-center gap-2 rounded-2xl border-2 border-zinc-200 px-6 py-3.5 text-[14px] font-bold text-zinc-700 transition-all hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700 disabled:opacity-60 disabled:pointer-events-none"
                     />
