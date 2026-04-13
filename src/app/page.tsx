@@ -122,6 +122,7 @@ const plans = [
     description: "Para criadores profissionais",
     features: ["Links ilimitados", "Produtos ilimitados", "Analytics avançado", "Domínio próprio", "Sem marca Linkora", "Suporte prioritário", "Webhooks"],
     cta: "Assinar Pro",
+    paymentUrl: "https://link.hubflashglobal.com.br/LinkoraPRO",
     highlighted: true,
     badge: "Mais popular",
   },
@@ -132,6 +133,7 @@ const plans = [
     description: "Para equipes e empresas",
     features: ["Tudo do Pro", "Múltiplas páginas", "Membros da equipe", "API completa", "White-label", "SLA 99.9%", "Gerente dedicado"],
     cta: "Assinar Business",
+    paymentUrl: "https://link.hubflashglobal.com.br/LinkoraBUSINESS",
     highlighted: false,
   },
 ];
@@ -1245,13 +1247,15 @@ export default function LandingPage() {
                       </div>
                       <p className="mt-1 text-[12px] text-zinc-400">cobrado mensalmente</p>
 
-                      <Link
-                        href="/register"
+                      <a
+                        href={plan.paymentUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="mt-6 flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-4 text-[15px] font-bold text-white shadow-lg shadow-violet-500/25 transition-all hover:shadow-xl hover:scale-[1.01] active:scale-[0.99]"
                       >
                         {plan.cta}
                         <ArrowRight className="h-4 w-4" />
-                      </Link>
+                      </a>
                       <p className="mt-3 text-center text-[11px] text-zinc-400">Cancele quando quiser · Sem permanência</p>
 
                       <div className="my-6 h-px bg-zinc-100" />
@@ -1289,12 +1293,14 @@ export default function LandingPage() {
                       ))}
                     </ul>
 
-                    <Link
-                      href="/register"
+                    <a
+                      href={plan.paymentUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="mt-8 flex items-center justify-center rounded-2xl border-2 border-zinc-200 px-6 py-3.5 text-[14px] font-bold text-zinc-700 transition-all hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700"
                     >
                       {plan.cta}
-                    </Link>
+                    </a>
                   </>
                 )}
               </div>
